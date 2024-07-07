@@ -9,7 +9,7 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
@@ -31,12 +31,12 @@ public class OauthConfig {
 
     private String responseType;
 
-    private Map<OauthParamEnum, String> paramsNameMapping = new HashMap<>();
+    private Map<OauthParamEnum, String> paramsNameMapping = new EnumMap<>(OauthParamEnum.class);
 
     @Setter(AccessLevel.PRIVATE)
     private List<OauthEndpoint> endpoints = new ArrayList<>();
 
-    private Map<EndpointTypeEnum, OauthEndpoint> endpointMap = new HashMap<>();
+    private Map<EndpointTypeEnum, OauthEndpoint> endpointMap = new EnumMap<>(EndpointTypeEnum.class);
 
     public OauthConfig addEndpoint(OauthEndpoint endpoint) {
         endpointMap.put(endpoint.getType(), endpoint);
