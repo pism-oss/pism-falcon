@@ -17,7 +17,7 @@ public class OauthEndpoint {
 
     private EndpointTypeEnum type;
 
-    private HttpMethod method;
+    private HttpMethod method = HttpMethod.POST;
 
-    private OauthParams params;
+    private OauthParams params = new OauthParams();
 }

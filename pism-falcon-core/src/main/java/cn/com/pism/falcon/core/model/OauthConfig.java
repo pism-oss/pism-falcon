@@ -8,10 +8,7 @@ import lombok.Data;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author perccyking
@@ -31,10 +28,15 @@ public class OauthConfig {
 
     private String responseType;
 
+    private String grantType;
+
     private Map<OauthParamEnum, String> paramsNameMapping = new EnumMap<>(OauthParamEnum.class);
 
     @Setter(AccessLevel.PRIVATE)
     private List<OauthEndpoint> endpoints = new ArrayList<>();
+
+    @Setter(AccessLevel.PRIVATE)
+    private Map<String, String> cache = new HashMap<>();
 
     private Map<EndpointTypeEnum, OauthEndpoint> endpointMap = new EnumMap<>(EndpointTypeEnum.class);
 
@@ -57,4 +59,12 @@ public class OauthConfig {
     }
 
 
+    public OauthConfig addCache(String cacheName, String cacheValue) {
+        cache.put(cacheName, cacheValue);
+        return this;
+    }
+
+    public String getCacheByName(String cacheName) {
+        return cache.get(cacheName);
+    }
 }

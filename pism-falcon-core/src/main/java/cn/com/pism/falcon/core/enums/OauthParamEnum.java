@@ -14,6 +14,7 @@ public enum OauthParamEnum {
     REDIRECT_URI("redirect_uri"),
     SCOPE("scope"),
     RESPONSE_TYPE("response_type"),
+    GRANT_TYPE("grant_type")
     ;
 
     private final String paramsName;
